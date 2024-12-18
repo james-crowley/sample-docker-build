@@ -21,21 +21,34 @@ jobs:
       - act/act:
           #job-name: Set up QEMU
           uses: docker/setup-qemu-action@v3
+          secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
           reuse: true
           platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
+          skip-create-env-and-secret-file: true
+          skip-install: true
+          cache-images: false
       - act/act:
           #job-name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v3
+          secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
           reuse: true
           platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
+          skip-create-env-and-secret-file: true
+          skip-install: true
+          cache-images: false
       - act/act:
           #job-name: Build and push
           uses: docker/build-push-action@v6
           with: |
             push: true
             tags: jamescrowleyibm/sample-docker-build:circleci
+          secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
           reuse: true
           platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
+          skip-create-env-and-secret-file: true
+          skip-install: true
+          verbose: true
+          cache-images: false
       
 
 workflows:
