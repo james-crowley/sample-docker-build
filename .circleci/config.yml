@@ -27,6 +27,7 @@ jobs:
           skip-create-env-and-secret-file: true
           skip-install: true
           cache-images: false
+          checkout: false
       - act/act:
           #job-name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v3
@@ -36,6 +37,7 @@ jobs:
           skip-create-env-and-secret-file: true
           skip-install: true
           cache-images: false
+          checkout: false
       - act/act:
           #job-name: Build and push
           uses: docker/build-push-action@v6
@@ -49,9 +51,17 @@ jobs:
           skip-install: true
           verbose: true
           cache-images: false
+          checkout: false
       
 
 workflows:
   main:
     jobs:
       - build-and-publish
+      - act/act:
+          skip-create-workflow-file: true
+          workflow-file: .circleci/github.yml
+          secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
+          #reuse: true
+          verbose: true
+          platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
