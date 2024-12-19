@@ -15,6 +15,7 @@ jobs:
           with: |
             username: jamescrowleyibm
             password: ${{ secrets.DOCKERHUB_TOKEN }}
+            logout: false
           secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
           reuse: true
           platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
