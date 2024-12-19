@@ -18,6 +18,7 @@ jobs:
             logout: false
           secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
           reuse: true
+          verbose: true
           platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
       - act/act:
           #job-name: Set up QEMU
