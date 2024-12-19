@@ -10,7 +10,7 @@ jobs:
     resource_class: large
     steps:
       - act/act:
-          #job-name: Login to Docker Hub
+          step-name: Login to Docker Hub
           uses: docker/login-action@v3
           with: |
             username: ${{ vars.DOCKERHUB_USERNAME }}
@@ -24,7 +24,7 @@ jobs:
           cache-images: false
           action-offline-mode: true
       - act/act:
-          #job-name: Set up QEMU
+          step-name: Set up QEMU
           uses: docker/setup-qemu-action@v3
           #secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
           reuse: true
@@ -35,7 +35,7 @@ jobs:
           checkout: false
           action-offline-mode: true
       - act/act:
-          #job-name: Set up Docker Buildx
+          step-name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v3
           #secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
           reuse: true
@@ -46,7 +46,7 @@ jobs:
           checkout: false
           action-offline-mode: true
       - act/act:
-          #job-name: Build and push
+          step-name: Build and push
           uses: docker/build-push-action@v6
           with: |
             push: true
