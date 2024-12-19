@@ -55,5 +55,3 @@ workflows:
           workflow-file: .github/workflows/config.yml
           secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
           variables: "DOCKERHUB_USERNAME"
-          verbose: true
-          cache-images: false
