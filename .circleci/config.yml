@@ -49,7 +49,7 @@ jobs:
 workflows:
   main:
     jobs:
-      - build-and-publish
+      # - build-and-publish
       - act/act:
           skip-create-workflow-file: true
           workflow-file: .github/workflows/config.yml
@@ -57,4 +57,4 @@ workflows:
           variables: "DOCKERHUB_USERNAME"
           cache-images: false
           cache-cli: false
-          cache-actions: false
+          cache-actions: true
