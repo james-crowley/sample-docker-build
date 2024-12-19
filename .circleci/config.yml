@@ -20,6 +20,8 @@ jobs:
           reuse: true
           verbose: true
           platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
+          cache-images: false
+          action-offline-mode: true
       - act/act:
           #job-name: Set up QEMU
           uses: docker/setup-qemu-action@v3
@@ -30,6 +32,7 @@ jobs:
           skip-install: true
           cache-images: false
           checkout: false
+          action-offline-mode: true
       - act/act:
           #job-name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v3
@@ -40,6 +43,7 @@ jobs:
           skip-install: true
           cache-images: false
           checkout: false
+          action-offline-mode: true
       - act/act:
           #job-name: Build and push
           uses: docker/build-push-action@v6
@@ -54,6 +58,7 @@ jobs:
           verbose: true
           cache-images: false
           checkout: false
+          action-offline-mode: true
       
 
 workflows:
