@@ -18,44 +18,32 @@ jobs:
             logout: false
           secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
           variables: "DOCKERHUB_USERNAME"
-          reuse: true
           verbose: true
-          platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
           cache-images: false
-          action-offline-mode: true
       - act/act:
           step-name: Set up QEMU
           uses: docker/setup-qemu-action@v3
-          reuse: true
-          platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
           skip-create-env-var-secret-files: true
           skip-install: true
           cache-images: false
           checkout: false
-          action-offline-mode: true
       - act/act:
           step-name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v3
-          reuse: true
-          platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
           skip-create-env-var-secret-files: true
           skip-install: true
           cache-images: false
           checkout: false
-          action-offline-mode: true
       - act/act:
           step-name: Build and push
           uses: docker/build-push-action@v6
           with: |
             push: true
             tags: jamescrowleyibm/sample-docker-build:circleci
-          reuse: true
-          platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
           skip-create-env-var-secret-files: true
           skip-install: true
           cache-images: false
           checkout: false
-          action-offline-mode: true
       
 
 workflows:
@@ -68,6 +56,4 @@ workflows:
           secrets: "GITHUB_TOKEN,DOCKERHUB_TOKEN"
           variables: "DOCKERHUB_USERNAME"
           verbose: true
-          platform: ubuntu-latest=catthehacker/ubuntu:act-22.04
           cache-images: false
-          action-offline-mode: true
