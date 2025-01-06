@@ -9,9 +9,9 @@ jobs:
       image: ubuntu-2204:current
     resource_class: large
     steps:
-      - act/restore-cli
-      - act/restore-actions
-      - act/restore-image
+      # - act/restore-cli
+      # - act/restore-actions
+      # - act/restore-image
       - act/install
       - act/act:
           step-name: Login to Docker Hub
@@ -57,9 +57,9 @@ jobs:
           cache-cli: false
           cache-actions: false
           checkout: false
-      - act/cache-cli
-      - act/cache-actions
-      - act/cache-image
+      # - act/cache-cli
+      # - act/cache-actions
+      # - act/cache-image
 
 workflows:
   main:
