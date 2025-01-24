@@ -77,4 +77,5 @@ workflows:
           cache-cli: false
           cache-actions: true
       - do-nothing
-
+      - do-nothing-2:
+          type: no-op
