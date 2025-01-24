@@ -60,6 +60,9 @@ jobs:
       - act/cache-cli
       - act/cache-actions
       # - act/cache-image
+  
+  do-nothing:
+    type: no-op
 
 workflows:
   main:
@@ -73,6 +76,5 @@ workflows:
           cache-images: false
           cache-cli: false
           cache-actions: true
-      - do-nothing:
-          type: no-op
-          
+      - do-nothing
+
