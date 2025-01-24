@@ -73,3 +73,6 @@ workflows:
           cache-images: false
           cache-cli: false
           cache-actions: true
+      - do-nothing:
+          type: no-op
+          
