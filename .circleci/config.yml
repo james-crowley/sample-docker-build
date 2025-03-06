@@ -2,8 +2,22 @@ version: 2.1
 
 orbs:
   act: cci-labs/act@dev:c49dc8f599f316d706747d022e13b6d549997b7b
+  browser-tools: circleci/browser-tools@1.5.2
 
 jobs:
+  test-arm-issue:
+    docker:
+      - image: cimg/ruby:3.4.2-node
+    resource_class: arm.large
+    steps:
+      - checkout
+      - run:
+          command: |
+            dpkg --print-architecture | grep -q arm; echo $?
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+
+
   build-and-publish:
     machine:
       image: ubuntu-2204:current
@@ -67,6 +81,7 @@ jobs:
 workflows:
   main:
     jobs:
+      - test-arm-issue
       - build-and-publish
       - act/act:
           skip-create-workflow-file: true
@@ -79,3 +94,10 @@ workflows:
       - do-nothing
       - do-nothing-2:
           type: no-op
+      - testing:
+          machine:
+            image: ubuntu-2204:current
+          resource_class: large
+          steps:
+            - act/restore-cli
+
