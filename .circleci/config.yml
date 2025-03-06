@@ -74,9 +74,7 @@ jobs:
       - act/cache-cli
       - act/cache-actions
       # - act/cache-image
-  
-  do-nothing:
-    type: no-op
+
 
 workflows:
   main:
@@ -91,13 +89,3 @@ workflows:
           cache-images: false
           cache-cli: false
           cache-actions: true
-      - do-nothing
-      - do-nothing-2:
-          type: no-op
-      - testing:
-          machine:
-            image: ubuntu-2204:current
-          resource_class: large
-          steps:
-            - act/restore-cli
-
